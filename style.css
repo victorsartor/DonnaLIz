@@ -1,0 +1,711 @@
+/* ================================== */
+/* Variáveis de Cores e Fontes Iniciais (Design System Local) */
+/* ================================== */
+:root {
+  --primary-teal: #198e9b;
+  /* Tom primário da paleta original */
+  --dark-accent: #0e5a63;
+  /* Cor mais escura aplicada em interações de hover e visibilidade */
+  --soft-white: #f9fbfb;
+  /* Branco acolhedor para uso nos fundos das seções evitando luz extrema */
+  --text-main: #2d2d2d;
+  /* Cinza escuro para textos, previne o cansaço visual comum no preto puro */
+  --font-title: 'Playfair Display', serif;
+  /* Fonte clássica com serifa designada para Títulos */
+  --font-body: 'Lato', sans-serif;
+  /* Fonte geométrica sem serifa desenhada para text block */
+  --transition: all 0.3s ease;
+  /* Padrão elegante de micro-animações (300ms) */
+}
+
+/* ================================== */
+/* Resets de Estilo (Zera os espaçamentos automáticos do navegador) */
+/* ================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Garante que 'padding' e border existam dentro dos limites sem expandir a div */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--soft-white);
+  line-height: 1.6;
+  /* Afastamento horizontal benéfico para leitura densa */
+  -webkit-font-smoothing: antialiased;
+  /* Torna as bordas textuais mais elegantes nas telas MacOS/IOS */
+}
+
+/* Força que quaisquer encabeçamentos adotem nossa tipografia premium de Titulação */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+}
+
+/* Anula os sublinhados nativos criados pelos hiperlinks na web */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Retira as esferas 'bullets' de listagens comuns de marcação */
+ul {
+  list-style: none;
+}
+
+/* ================================== */
+/* Configuração e Empacotador de Grid / Container Base */
+/* ================================== */
+/* Elemento utilizado globalmente nas seções para evitar que elas batam 100% nas bordas do monitor */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Margem responsiva de segurança para as extremidades de celulares */
+}
+
+/* ================================== */
+/* Botões Interativos (Call To Actions) Globais */
+/* ================================== */
+
+/* Forma geral de um botão para evitar reescrita (Dry Code) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  /* Amplitude encorpada para facilitar o toque de dedo */
+  border-radius: 4px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Variação 1S: Primário total preenchido e projetado (Usando cor Teal Base) */
+.btn-primary {
+  background-color: var(--primary-teal);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(25, 142, 155, 0.3);
+  /* Aura verde gerando dimensão no fundo escuro/claro */
+}
+
+/* Quando o mouse descansa sobre ele (Hover) escurece subindo no Y  */
+.btn-primary:hover {
+  background-color: var(--dark-accent);
+  box-shadow: 0 6px 20px rgba(14, 90, 99, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Variação 2 Oca: Formada por contornos esvaziados contendo a coloração invertida pro interior vazio (Usado no NavBar) */
+.btn-outline {
+  border: 2px solid var(--primary-teal);
+  color: var(--primary-teal);
+  background-color: transparent;
+  padding: 10px 24px;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-teal);
+  color: #fff;
+}
+
+/* Acompanhador auxiliar caso um ícone Font-Aws seja acoplado com botão */
+.icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* ================================== */
+/* Cabeçalho Fixo (Navbar e Identidade) */
+/* ================================== */
+.header {
+  background-color: #fff;
+  padding: 24px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  /* Sticky segura o componente grudado ao chover (scroll down) a view */
+  top: 0;
+  /* Inicia o agarramento com tolerância zero distante do topo físico da janela */
+  z-index: 100;
+  /* Alta camada protuberante não deixando outros box cobrirem o menu */
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  /* Distribui itens forçando eles se repulsarem pras paredes left/right  */
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-teal);
+  letter-spacing: -0.5px;
+}
+
+/* Comportamento Base/Mobile First do menu onde nativamente os links partem ocultos até os breakpoints de desk ativarem  */
+.nav-menu {
+  display: none;
+}
+
+/* Estilo invocado via Script DOM apenas ativado pelo Tap do Mobile Menu */
+.nav-menu.active {
+  display: flex;
+  flex-direction: column;
+  /* Coluna fluída */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  /* Projeta sombras nas rebarbas inferiores */
+  gap: 15px;
+  /* Altura exata dividida entre o topico Inicio Especialidade ... */
+  text-align: center;
+  z-index: 105;
+}
+
+/* Ação Secundária Superior ocultada nos pequenos terminais celulares visando desafogar a mini tela  */
+.header-cta {
+  display: none;
+}
+
+/* Traços Hamburger interativos renderizado com auxílio JS que abre a Div Oculta no SmartPhone*/
+.mobile-menu-btn {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================================== */
+/* Seção Hero de Destaque Incial (Hero Banner) */
+/* ================================== */
+.hero {
+  padding: 80px 0 60px;
+  background-color: var(--soft-white);
+  min-height: calc(100vh - 90px);
+  /* Regra visual 100 Viewport Height descontando espaço físico em Pixels ocupados pelo cabeçalho superior  */
+  display: flex;
+  align-items: center;
+}
+
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  /* Pilar básico para mobile, tudo enfilerado por cima */
+  gap: 50px;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+/* Sub-Span embutido no Titulo Hero que promove destaque e quebra intencional via Display em blocos nos cels */
+.hero-title span {
+  color: var(--primary-teal);
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #666;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Envelopador do Rosto ou Modelo Representativa da Homepage contendo Radius e sombras pesadas para foco */
+.hero-image {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+  /* Sombra vasta no fundo da doutora */
+  position: relative;
+}
+
+/* Adicionando um sub-elemento decorativo desenhado somente via borda e deslocado 20px pelas origens X e Y atras da Imagem Principal   */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--primary-teal);
+  border-radius: 12px;
+  z-index: -1;
+}
+
+/* Caixas fictícias com mensagens enquanto artes definitivas não habitam os diretórios HTML local */
+.placeholder-img {
+  background-color: #eaeaea;
+  width: 100%;
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Breakpoint Visual para Tablet e Telas Intermediárias Maiores > de 768px */
+@media (min-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero .container {
+    flex-direction: row;
+    /* Coloca titulo vs imagem lateralizado paralelamente em vez de cima/baixo*/
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-content {
+    flex: 1.2;
+    text-align: left;
+    padding-right: 50px;
+  }
+
+  .hero-subtitle {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-image {
+    flex: 1;
+    margin: 0;
+  }
+}
+
+/* Breakpoint para Computadores e PCs Maiores > 992px de Largura */
+@media (min-width: 992px) {
+
+  /* Retira Botão Hamburger permanentemente em monitores */
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  /* Alinhamento do Menu Desktop: Expulsa tudo do centro empurrando a margem direita para a extrema */
+  .nav-menu {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+    margin-right: 40px;
+  }
+
+  /* Reseta qualquer estado Ativo (JS do mobile) que pudesse quebrar visualmente o Desktop em redimensionamentos */
+  .nav-menu.active {
+    position: static;
+    flex-direction: row;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+  }
+
+  .nav-link {
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    transition: var(--transition);
+    position: relative;
+    /* Base para nascer as animações filhas de traço */
+  }
+
+  /* Feitoria artesanal do fiozinho/sublinhado Verde abaixo dos Links com transição ao repousar/sair o Ponto  */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-teal);
+    transition: var(--transition);
+  }
+
+  .nav-link:hover {
+    color: var(--primary-teal);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .header-cta {
+    display: block;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  /* Reposiciona unindo as partes de título desfeitas no celular numa frase só. */
+  .hero-title span {
+    display: inline;
+  }
+}
+
+/* ================================== */
+/* Configurações Globais Modulares para as Seções Restantes */
+/* ================================== */
+section {
+  padding: 80px 0;
+  /* Padding generoso superior e inferior que atesta o ar limpo da Landing */
+}
+
+/* Títulos Intro de Seção com descritivo formatado linear */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--primary-teal);
+  margin-bottom: 15px;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================================== */
+/* Seção Especialidades (Serviços)    */
+/* ================================== */
+.services {
+  background-color: #fff;
+}
+
+/* Embalador nativo Grid formatando em fileira vertical simples por default para celulares */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.service-card {
+  background: var(--soft-white);
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: var(--transition);
+  border: 1px solid #eee;
+  /* Leve traço contornado */
+}
+
+/* Ao pairar sobre a aba ela sobe destacando os a cor da clinica como borda */
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  border-color: var(--primary-teal);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary-teal);
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--text-main);
+}
+
+.service-card p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ================================== */
+/* Seção Sobre Nós (Composição Foto + Texto) */
+/* ================================== */
+.about {
+  background-color: var(--soft-white);
+  /* Intercala com fundo das grades acentuando contraste entre as blocos visuais */
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: var(--primary-teal);
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.about-text strong {
+  display: block;
+  margin-top: 30px;
+  color: var(--primary-teal);
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about-img-placeholder {
+  aspect-ratio: 4/3;
+  font-size: 1.1rem;
+}
+
+/* ================================== */
+/* Seção Equipe (Cards dos Doutores)  */
+/* ================================== */
+.team {
+  background-color: #fff;
+}
+
+/* O Auto-fill Grid quebra inteligentemente as colunas tentando sempre abrigar 250px se espremidos demais eles encavalham uma fileira de linha inteira */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: var(--soft-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+/* Simula clique/toque vivo pro cartão pulando pra cima e evidenciando a cor oficial */
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-teal);
+}
+
+.team-photo {
+  background-color: #eaeaea;
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.team-info {
+  padding: 24px;
+  text-align: center;
+}
+
+.team-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--text-main);
+  font-family: var(--font-title);
+}
+
+/* Badges circulares da posição ocupada pelo integrante clinic */
+.team-tag {
+  display: inline-block;
+  background-color: rgba(25, 142, 155, 0.1);
+  /* Um décimo transparente da cor base da clinica */
+  color: var(--primary-teal);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================================== */
+/* Breakpoints/Queries Finais Tablet e Desktop */
+/* ================================== */
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Especialidade Duplas L / R */
+  }
+
+  .about-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .about-text {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  .about-image {
+    flex: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 Colunas expansivas nos Monitores */
+  }
+}
+
+/* ================================== */
+/* Divisórias Minimalistas Horizontais*/
+/* ================================== */
+
+/* Fita separadora extremamente requintada injetando degradê e esvaziando para as bordas*/
+.section-divider {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(25, 142, 155, 0.3), transparent);
+  margin: 0 auto;
+  max-width: 1000px;
+  /* Limite teto de esticadura da fita visual */
+}
+
+/* ================================== */
+/* Rodapé Fixo (Footer Principal)     */
+/* ================================== */
+.footer {
+  background-color: var(--text-main);
+  /* Mergulha o background do rodapé no cinza breu */
+  color: #fff;
+  padding: 60px 0 20px;
+}
+
+/* Estrutura Mobile contendo unicamente 1 Grid (1fr) com 3 blocos verticaisz*/
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer h3 {
+  font-family: var(--font-title);
+  color: var(--primary-teal);
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.footer h4 {
+  font-family: var(--font-title);
+  color: var(--soft-white);
+  /* Branco Suave não brilhoso pras mini titulações */
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.footer-contact ul li {
+  color: #ccc;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Pimba em tons verdes os iconinhos nativos das listas de telefone/maps/relogio*/
+.footer-contact ul li i {
+  color: var(--primary-teal);
+  margin-top: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Configuração do engloblador bolha cinza escura dos icones do finalzinho */
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  /* Esfera 360% */
+  color: #fff;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  background-color: var(--primary-teal);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(25, 142, 155, 0.4);
+}
+
+/* Cinta demarcadora fina divisória dos Copyrights na conclusão da pagina */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Modificação inteligente que altera o Footer em Telões pra separar em 3 estantes laterais */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

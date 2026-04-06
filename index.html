@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donna Liz Odontologia | Especialistas em Florianópolis</title>
+
+    <!-- Metatags de SEO para melhor rankeamento orgânico nas buscas do Google -->
+    <meta name="description"
+        content="Atendimento odontológico de excelência em Florianópolis. Cuidamos do seu sorriso com tecnologia, conforto e profissionais altamente qualificados. Agende sua consulta!">
+
+    <!-- Fontes do Google: 'Playfair Display' para títulos elegantes e 'Lato' para corpo textual confortável -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome: Biblioteca auxiliar requisitada para apresentar ícones vetoriais no site -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Importação do arquivo de folha de estilos onde residem as regras (Mobile-First) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho (Header): Contém a logomarca de texto, área de navegação e botões Call To Action. -->
+    <header class="header">
+        <div class="container">
+            <!-- Espaço posicionado da Logo (Identidade da Marca) -->
+            <a href="#" class="logo">Donna Liz</a>
+
+            <!-- Navegação principal interna (Oculta na exibição de Smartphones por default) -->
+            <nav class="nav-menu">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#especialidades" class="nav-link">Especialidades</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+            </nav>
+
+            <!-- Botão Secundário CTA apontando ao WhatsApp dentro do header para Desktops -->
+            <div class="header-cta">
+                <a href="https://wa.me/5548991697878" target="_blank" class="btn btn-outline"
+                    rel="noopener noreferrer">Agendar Consulta</a>
+            </div>
+
+            <!-- Botão de "Menu Hambúrguer": Apenas renderizado em celulares para invocar as seções do site -->
+            <button class="mobile-menu-btn" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Seção de Abertura / Herói (Hero Display): Responsável pelo primeiro impacto com foto e convite atrativo -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <!-- Esquerda: Informações cruciais, slogan emocional "TE FAZER SORRIR!" e botão CTA principal  -->
+            <div class="hero-content">
+                <h1 class="hero-title">Nosso foco é <span>TE FAZER SORRIR!</span></h1>
+                <p class="hero-subtitle">Atendimento odontológico de excelência em Florianópolis. Cuidamos do seu
+                    sorriso com tecnologia, conforto e profissionais altamente qualificados.</p>
+                <a href="https://wa.me/5548991697878" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp icon"></i> Agendar pelo WhatsApp
+                </a>
+            </div>
+
+            <!-- Direita: Destinada à exibição da profissional preenchendo toda a moldura -->
+            <div class="hero-image">
+                <img src="images/liz.png" alt="Dra. Liz"
+                    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha divisória minimalista utilizando degradês entre a Hero e a proxima seção.-->
+    <hr class="section-divider">
+
+    <!-- Seção Especialidades: Exposição de tratamentos detalhados através de um Grid de Cartões -->
+    <section class="services" id="especialidades">
+        <div class="container">
+            <!-- Cabeçalho explicativo local com título alinhado ao centro -->
+            <div class="section-header">
+                <h2>Nossas Especialidades</h2>
+                <p>Tratamentos modernos focados no seu bem-estar e na sua autoestima.</p>
+            </div>
+
+            <!-- Grade responsiva contendo todas as 6 opções de tratamentos médicos -->
+            <div class="services-grid">
+                <!-- Modelo de Cartão: Cirurgias -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tooth"></i></div>
+                    <h3>Cirurgias</h3>
+                    <p>Procedimentos seguros e confortáveis para restaurar rapidamente sua saúde bucal.</p>
+                </div>
+                <!-- Modelo de Cartão: Implantes -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-teeth"></i></div>
+                    <h3>Implantes</h3>
+                    <p>Recupere a confiança ao sorrir e mastigar com dentes perfeitos formados para você.</p>
+                </div>
+                <!-- Modelo de Cartão: Clareamento -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Clareamento</h3>
+                    <p>Conquiste um sorriso iluminado e radiante para destacar a sua beleza natural.</p>
+                </div>
+                <!-- Modelo de Cartão: Odontopediatria -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-child"></i></div>
+                    <h3>Odontopediatria</h3>
+                    <p>Cuidado humanizado e divertido para garantir a saúde e o sorriso saudável das crianças.</p>
+                </div>
+                <!-- Modelo de Cartão: Harmonização Facial -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-smile-beam"></i></div>
+                    <h3>Harmonização Facial</h3>
+                    <p>Realce seus traços com naturalidade, elevando sua autoestima e sensação de bem-estar.</p>
+                </div>
+                <!-- Modelo de Cartão: Ortodontia -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+                    <h3>Ortodontia</h3>
+                    <p>Alinhe seus dentes com discrição para um sorriso simétrico, bonito e duradouro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha divisória minimalista -->
+    <hr class="section-divider">
+
+    <!-- Seção Institucional de História Clínica (Sobre a Donna Liz) -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <!-- Layout subdividido com área semântica de Textos e Foto da clínica -->
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a Donna Liz</h2>
+                    <p>Localizado na Vargem Grande Florianópolis, nosso consultório nasceu do desejo de oferecer uma
+                        odontologia diferente. Combinamos um ambiente acolhedor, atendimento altamente personalizado e o
+                        que há de mais moderno na tecnologia odontológica.</p>
+                    <p>Acreditamos que cada paciente é único. Por isso, ouvimos suas histórias, entendemos suas
+                        necessidades e transformamos os seus sonhos em realidade.</p>
+                    <p>Afinal, <strong>Nosso foco é TE FAZER SORRIR!</strong></p>
+                </div>
+                <div class="about-image">
+                    <!-- Espaço (Placeholder) onde constará uma ambientação atrativa para clínica futuramente -->
+                    <div class="placeholder-img about-img-placeholder">
+                        [Foto da Clínica/Ambiente]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Linha divisória minimalista -->
+    <hr class="section-divider">
+
+    <!-- Seção Equipe: Apresenta cartões individuais com nomes e especialidades de cada membro -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <!-- Cabeçalho descritivo da seção de profissionais -->
+            <div class="section-header">
+                <h2>Conheça Nossa Equipe</h2>
+                <p>Profissionais dedicados a entregar a melhor experiência e cuidado para você.</p>
+            </div>
+
+            <!-- Layout base para cartões adaptados por um grid completamente responsivo -->
+            <div class="team-grid">
+                <!-- Profissional: Dra. Bianca -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dra. Bianca]</div>
+                    <div class="team-info">
+                        <h3>Dra. Bianca</h3>
+                        <span class="team-tag">Odontologia</span> <!-- Etiqueta profissional arredondada -->
+                    </div>
+                </div>
+                <!-- Profissional: Dra. Elisa -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dra. Elisa]</div>
+                    <div class="team-info">
+                        <h3>Dra. Elisa</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Dra. Letícia -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dra. Letícia]</div>
+                    <div class="team-info">
+                        <h3>Dra. Letícia</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Dr. Alan -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dr. Alan]</div>
+                    <div class="team-info">
+                        <h3>Dr. Alan</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Dr. Leandro -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dr. Leandro]</div>
+                    <div class="team-info">
+                        <h3>Dr. Leandro</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Dra. Aline -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dra. Aline]</div>
+                    <div class="team-info">
+                        <h3>Dra. Aline</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Dra. Fernanda -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Dra. Fernanda]</div>
+                    <div class="team-info">
+                        <h3>Dra. Fernanda</h3>
+                        <span class="team-tag">Odontologia</span>
+                    </div>
+                </div>
+                <!-- Profissional: Kerli -->
+                <div class="team-card">
+                    <div class="team-photo">[Foto Kerli]</div>
+                    <div class="team-info">
+                        <h3>Kerli</h3>
+                        <span class="team-tag">Recepção</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé (Footer Escuro): Base final de Contatos, Locais, Endereços, Horários e Direitos Autorais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna 1: Apresentação da Marca & Breve contexto textual -->
+                <div class="footer-brand">
+                    <h3>Donna Liz</h3>
+                    <p>Odontologia de excelência na Vargem Grande, Florianópolis. Nosso foco é TE FAZER SORRIR!</p>
+                </div>
+                <!-- Coluna 2: Informações de contatos e horário comercial dispostos em lista e ícones -->
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> (48) 99169-7878</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Vargem Grande, Florianópolis - SC</li>
+                        <li><i class="fas fa-clock"></i> Seg. a Sex. das 08h às 18h</li>
+                    </ul>
+                </div>
+                <!-- Coluna 3: Redes Sociais com hiperlinks alinhados e micro-animações visuais -->
+                <div class="footer-social">
+                    <h4>Siga-nos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/donnaliz.odontologia/" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Painel final (Bottom): Copyright padrão indicando a reserva de limites da propriedade-->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Donna Liz Odontologia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts em JS incorporados para garantir o funcionamento do Menu Mobile (Esconder/Exibir) -->
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Alterna entre estado aberto e fechado injetando a classe 'active' ao clicar nas três barras
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Loop ouvinte: Ao clicar em 'Sobre' ou 'Especialidades', o link roda a ancora e o menu recolhe da tela sozinho
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
